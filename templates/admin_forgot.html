@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Forgot Password</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" href="/static/SHOPVERSE.png">
+    <script src="https://kit.fontawesome.com/27717ce53c.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background: url('https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .custom-flash {
+            font-weight: 500;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} custom-flash alert-dismissible fade show"
+            role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <h3 class="text-center mb-4">Admin Forgot Password</h3>
+        <form method="POST">
+            <div class="mb-3">
+                <label>Email address</label>
+                <input type="email" name="email" class="form-control" placeholder="admin@example.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Send Reset Link</button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="{{ url_for('adminlogin') }}">Back to Login</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - Shopverse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" href="/static/SHOPVERSE.png">
+    <style>
+        body {
+            background: url('https://plus.unsplash.com/premium_photo-1681487843757-8a6d04422652?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            min-height: 100vh;
+            padding: 50px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .policy-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            color: #f9f9f9;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        h1,
+        h3 {
+            color: #ffe600;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .btn-back {
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #e0a800;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .policy-box {
+                padding: 25px 20px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay">
+        <div class="policy-box">
+            <h1 class="text-center mb-4">Privacy Policy</h1>
+
+            <p>
+                At <strong>Shopverse</strong>, we value your privacy and are committed to protecting your personal
+                information.
+                This Privacy Policy explains how we collect, use, and secure your data.
+            </p>
+
+            <h3>1. Information We Collect</h3>
+            <p>
+                - Personal data like name, email, phone number, address, etc.<br>
+                - Payment and transaction details via secure gateways.<br>
+                - Usage data for analytics and improvement.
+            </p>
+
+            <h3>2. How We Use It</h3>
+            <p>
+                - To process orders and provide support.<br>
+                - To notify you of offers, updates, or issues.<br>
+                - To improve our platform and personalize your experience.
+            </p>
+
+            <h3>3. Cookies</h3>
+            <p>
+                We use cookies to improve site performance and remember user preferences. You may disable them in your
+                browser.
+            </p>
+
+            <h3>4. Data Security</h3>
+            <p>
+                We implement robust security practices to safeguard your information against unauthorized access.
+            </p>
+
+            <h3>5. Third-party Services</h3>
+            <p>
+                We only share data with services like payment processors or shipping partners as needed for operations.
+            </p>
+
+            <h3>6. Your Rights</h3>
+            <p>
+                You may request access to, correction of, or deletion of your personal data at any time.
+            </p>
+
+            <h3>7. Updates to this Policy</h3>
+            <p>
+                We may update this Privacy Policy periodically. The updated version will be posted here.
+            </p>
+
+            <div class="text-center mt-4">
+                <a href="{{ url_for('index') }}" class="btn-back">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

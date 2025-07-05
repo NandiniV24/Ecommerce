@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTP Verification</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="icon" href="/static/SHOPVERSE.png">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('https://plus.unsplash.com/premium_photo-1700830193661-f6822dca5eee?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+    }
+
+    .otp-form {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      width: 100%;
+      max-width: 400px;
+      color: #fff;
+    }
+
+    .otp-form h3 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #00ffff;
+    }
+
+    .form-control {
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 1rem;
+      background-color: #00ffff;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: #00cccc;
+    }
+
+    .flash-message {
+      position: fixed;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.85);
+      color: #111;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      z-index: 999;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+
+    @media (max-width: 480px) {
+      .otp-form {
+        padding: 1.5rem;
+      }
+
+      .flash-message {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="flash-message">
+    <i class="fas fa-bell me-2"></i>{{ message }}
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+  <form class="otp-form" method="post">
+    <h3>OTP Verification</h3>
+    <div class="mb-3">
+      <label for="otp" class="form-label">Enter OTP</label>
+      <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter your OTP" required>
+    </div>
+    <button type="submit" class="btn btn-submit">Submit</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/27717ce53c.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

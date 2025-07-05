@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set New Password</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" href="/static/SHOPVERSE.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        body {
+            background-color: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .confirm-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .flash-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-left: 5px solid #f5c6cb;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .input-group-text i {
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: #6c757d;
+        }
+
+        .input-group-text:hover i {
+            color: #000;
+        }
+
+        #password-msg {
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        #match-msg {
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="confirm-box">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="flash-message">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <h3 class="text-center mb-4">Set New Password</h3>
+        <form method="POST" onsubmit="return validatePasswords()">
+            <div class="mb-3">
+                <label for="password" class="form-label">New Password</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="password" name="new-password" required />
+                    <span class="input-group-text" id="togglePassword"><i class="fas fa-eye" id="icon1"></i></span>
+                </div>
+                <div id="password-msg" class="text-danger"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Confirm Password</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="confirm_password" name="confirm-password"
+                        required />
+                    <span class="input-group-text" id="toggleConfirm"><i class="fas fa-eye" id="icon2"></i></span>
+                </div>
+                <div id="match-msg" class="text-danger" style="display: none;">Passwords do not match</div>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Update Password</button>
+        </form>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const confirmInput = document.getElementById('confirm_password');
+        const togglePassword = document.getElementById('togglePassword');
+        const toggleConfirm = document.getElementById('toggleConfirm');
+        const icon1 = document.getElementById('icon1');
+        const icon2 = document.getElementById('icon2');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            icon1.classList.toggle('fa-eye');
+            icon1.classList.toggle('fa-eye-slash');
+        });
+
+        toggleConfirm.addEventListener('click', function () {
+            const type = confirmInput.type === 'password' ? 'text' : 'password';
+            confirmInput.type = type;
+            icon2.classList.toggle('fa-eye');
+            icon2.classList.toggle('fa-eye-slash');
+        });
+
+        passwordInput.addEventListener('input', function () {
+            const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+            const msg = document.getElementById('password-msg');
+            if (pattern.test(passwordInput.value)) {
+                msg.textContent = 'Strong password ✔';
+                msg.style.color = 'green';
+            } else {
+                msg.textContent = 'Min 8 chars, 1 uppercase, 1 digit, 1 special char';
+                msg.style.color = 'red';
+            }
+        });
+
+        function validatePasswords() {
+            const matchMsg = document.getElementById('match-msg');
+            if (passwordInput.value !== confirmInput.value) {
+                matchMsg.style.display = 'block';
+                return false;
+            }
+            matchMsg.style.display = 'none';
+            return true;
+        }
+    </script>
+</body>
+
+</html>
